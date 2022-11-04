@@ -53,11 +53,37 @@ combinationAPI: {
     ],
   },
 ```
+
 - Para desplegarlo en `serverless.ts`, (si el usuario no esta configurado por defecto) en `provider` se agrega
+
 ```
 profile: "serverlessUser",
 ```
+
 - Tambien en `provider` se agrega la región (por defecto es us-east-1)
+
 ```
 region: "us-east-1",
+```
+
+# Combination API Clase 6 - Function Lambda
+
+- Se crea función `apiGateway.ts` para definir las respuestas
+- Se define código de Lambda
+
+```
+export const handler = async (event: APIGatewayProxyEvent) => {
+  const { queryStringParameters = {} } = event;
+
+  const { currency } = queryStringParameters;
+
+  if (!currency) {
+    return formatJSONResponse({
+      statusCode: 400,
+      data: { message: "Missing currency parameter" },
+    });
+  }
+
+  return formatJSONResponse({ data: { message: "Success" } });
+};
 ```
