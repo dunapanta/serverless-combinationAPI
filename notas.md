@@ -150,3 +150,6 @@ export const handler = async (event: APIGatewayProxyEvent) => {
 };
 
 ```
+
+# Combination API Clase 8 - Deploy
+- `sls deploy`
